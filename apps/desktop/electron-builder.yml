@@ -1,0 +1,20 @@
+appId: app.twinly.desktop
+productName: Twinly
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+mac:
+  category: public.app-category.productivity
+  target: [dmg, zip]
+  hardenedRuntime: true
+  # Notarization runs when APPLE_ID, APPLE_APP_SPECIFIC_PASSWORD and APPLE_TEAM_ID are set.
+  notarize: true
+win:
+  target: nsis
+  # Code signing uses CSC_LINK / CSC_KEY_PASSWORD (or Azure Trusted Signing) from the environment.
+nsis:
+  oneClick: true
+  perMachine: false

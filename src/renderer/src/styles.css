@@ -1,0 +1,80 @@
+:root {
+  --bg: #f7f7f5;
+  --panel: #ffffff;
+  --text: #1d1d1b;
+  --muted: #6b6b66;
+  --border: #e4e4df;
+  --accent: #2f5bea;
+  --accent-text: #ffffff;
+  --user: #eef2ff;
+  --warn: #fff6e0;
+  --danger: #c0362c;
+  --ok: #2e9e5b;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #161615;
+    --panel: #1f1f1e;
+    --text: #ececea;
+    --muted: #9a9a94;
+    --border: #33332f;
+    --accent: #6b8cff;
+    --accent-text: #0e0e0d;
+    --user: #232a44;
+    --warn: #3a3220;
+    --danger: #ff7b70;
+    --ok: #5ccf8a;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+h1 { font-size: 22px; margin: 0 0 8px; }
+h2 { font-size: 16px; margin: 24px 0 4px; }
+button { font: inherit; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); cursor: pointer; }
+button:disabled { opacity: 0.5; cursor: default; }
+button.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+button.ghost { background: transparent; border-color: transparent; color: var(--muted); }
+button.small { padding: 4px 10px; font-size: 13px; }
+input, textarea { font: inherit; width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); background: var(--panel); color: var(--text); resize: vertical; }
+label { display: flex; flex-direction: column; gap: 4px; font-weight: 500; margin-bottom: 12px; }
+code { font: 12px ui-monospace, Menlo, monospace; color: var(--muted); }
+.muted { color: var(--muted); }
+.error { color: var(--danger); white-space: pre-wrap; }
+.center { display: grid; place-items: center; height: 100vh; color: var(--muted); }
+.row { display: flex; gap: 8px; margin-top: 8px; }
+
+.layout { display: grid; grid-template-columns: 260px 1fr; height: 100vh; }
+.sidebar { display: flex; flex-direction: column; gap: 8px; padding: 16px; border-right: 1px solid var(--border); background: var(--panel); min-height: 0; }
+.brand { font-weight: 700; font-size: 18px; margin-bottom: 8px; }
+.sidebar nav { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; }
+.task-link { display: flex; align-items: center; gap: 8px; text-align: left; border: none; background: transparent; padding: 6px 8px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.task-link.active { background: var(--bg); }
+.dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.dot.running, .dot.starting { background: var(--accent); }
+.dot.waiting_approval { background: #e0a200; }
+.dot.idle { background: var(--ok); }
+.dot.failed { background: var(--danger); }
+
+.main { min-width: 0; min-height: 0; }
+.new-task, .twin-setup { max-width: 720px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 12px; }
+.twin-setup { overflow-y: auto; height: 100vh; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.samples ul { padding-left: 18px; }
+
+.task { display: flex; flex-direction: column; height: 100vh; }
+.task-header { display: flex; align-items: center; gap: 8px; padding: 12px 24px; border-bottom: 1px solid var(--border); }
+.task-header button { margin-left: auto; }
+.timeline { flex: 1; overflow-y: auto; padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.bubble { max-width: 760px; padding: 10px 14px; border-radius: 12px; white-space: pre-wrap; }
+.bubble.user { align-self: flex-end; background: var(--user); }
+.bubble.agent { background: var(--panel); border: 1px solid var(--border); }
+.tool { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.tool-name { color: var(--muted); font-weight: 600; }
+.approval, .files { padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border); }
+.approval { background: var(--warn); }
+.files { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.composer { display: flex; gap: 8px; padding: 12px 24px 20px; border-top: 1px solid var(--border); align-items: flex-end; }
